@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,6 +23,12 @@ namespace WebAPI.Data
         public int? MaLoai { get; set; }
 
         [ForeignKey("MaLoai")]
-        public LoaiHang loaiHang { get; set; }
+        public LoaiHang LoaiHang { get; set; }
+
+        public ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public HangHoa()
+        {
+            ChiTietDonHangs = new List<ChiTietDonHang>();
+        }
     }
 }
